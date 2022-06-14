@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://img/player/barricade_en_bois.jpg" type="Texture" id=1]
+[ext_resource path="res://script/barricade.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.9944, 81.6555 )
+
+[node name="barricade" type="KinematicBody2D" groups=[
+"obstacle",
+]]
+visible = false
+collision_layer = 2
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 106.561, 336.638 )
+rotation = 1.5708
+scale = Vector2( 0.10276, 0.0966803 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 81.1028, 419.298 )
+shape = SubResource( 1 )
+disabled = true

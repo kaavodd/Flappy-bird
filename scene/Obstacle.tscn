@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://img/tuyauxbot.png" type="Texture" id=1]
+[ext_resource path="res://script/Obstacle.gd" type="Script" id=2]
+[ext_resource path="res://img/tuyauxtop.png" type="Texture" id=3]
+[ext_resource path="res://scene/barricade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scene/bulle.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 23.4834, 385.633 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 23.0096, 346.501 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 13.5828, 85.9421 )
+
+[node name="Obstacle" type="Node2D"]
+position = Vector2( 656.491, 0.186295 )
+script = ExtResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=[
+"environnement",
+]]
+collision_layer = 2
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 50.9653, 498.424 )
+scale = Vector2( 1, 2.57147 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 79.3472, 891.142 )
+shape = SubResource( 1 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="." groups=[
+"environnement",
+]]
+collision_layer = 2
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D2"]
+position = Vector2( 75.4957, -19.1244 )
+scale = Vector2( 1, 2.52675 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KinematicBody2D2"]
+position = Vector2( 77.4666, -12.8602 )
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="KinematicBody2D2"]
+position = Vector2( 117.98, 418.043 )
+collision_layer = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D2/Area2D"]
+position = Vector2( 8.46106, 3.37762 )
+shape = SubResource( 3 )
+
+[node name="barricade" parent="." instance=ExtResource( 4 )]
+
+[node name="bulle" parent="." instance=ExtResource( 5 )]
+position = Vector2( 226.244, 430.014 )

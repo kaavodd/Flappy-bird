@@ -1,0 +1,439 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://script/player.gd" type="Script" id=1]
+[ext_resource path="res://img/player/players.png" type="Texture" id=2]
+[ext_resource path="res://img/tuyauxbot.png" type="Texture" id=3]
+[ext_resource path="res://scene/Accueil.tscn" type="PackedScene" id=4]
+[ext_resource path="res://img/hud.png" type="Texture" id=5]
+[ext_resource path="res://img/egg.png" type="Texture" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 180, 0, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 360, 0, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 720, 0, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 166, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 180, 166, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 360, 166, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 540, 166, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 720, 166, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 332, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 180, 332, 180, 166 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 540, 332, 180, 166 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "voler",
+"speed": 20.0
+} ]
+
+[sub_resource type="Animation" id=14]
+resource_name = "Game_over"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ColorRect/Main_menu:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer2/Control:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Main_menu"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer2/Control:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer2/Control/Play:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer2/Control/High_score:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer2/Control/save_game:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CanvasLayer2/Control/ColorRect:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasLayer2/Control/Play:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CanvasLayer2/Control/High_score:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CanvasLayer2/Control/save_game:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+position = Vector2( -262, -18 )
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PoolVector2Array( 530.559, 325.223, 534.625, 314.616, 523.135, 314.44, 520.483, 303.833, 514.75, 300.25, 509.75, 299.25, 505, 299, 504.573, 301.889, 500.507, 303.656, 498.5, 302.5, 496.25, 303.75, 495.25, 305.25, 495, 306.25, 495.027, 308.429, 494.143, 311.258, 489.37, 304.187, 482.83, 307.015, 490.077, 333.708 )
+one_way_collision_margin = 0.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 504.15, 310.126 )
+scale = Vector2( 0.336626, 0.344805 )
+frames = SubResource( 13 )
+animation = "voler"
+frame = 1
+playing = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 504.929, 302.658 )
+current = true
+limit_left = 0
+limit_top = 10
+limit_bottom = 550
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_left = 1.34094
+margin_top = 11.2601
+margin_right = 41.3409
+margin_bottom = 51.2601
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+margin_left = 26.8426
+margin_top = 4.93643
+margin_right = 35.8426
+margin_bottom = 18.9364
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Control"]
+position = Vector2( 15.4654, 10.8803 )
+scale = Vector2( 0.171718, 0.0659207 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="CanvasLayer/Control"]
+position = Vector2( 68.975, 12.2497 )
+scale = Vector2( 0.0412542, 0.0506184 )
+texture = ExtResource( 6 )
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control"]
+margin_left = 77.0
+margin_top = 5.0
+margin_right = 84.0
+margin_bottom = 19.0
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control"]
+margin_left = 85.4703
+margin_top = 5.0
+margin_right = 93.4703
+margin_bottom = 19.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 91.9955
+margin_top = 201.086
+margin_right = 392.995
+margin_bottom = 552.086
+color = Color( 0, 0, 0, 0.607843 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/ColorRect"]
+position = Vector2( 152.939, 185.329 )
+scale = Vector2( 0.730807, 1.87269 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+margin_left = 58.733
+margin_top = 66.742
+margin_right = 98.733
+margin_bottom = 80.742
+text = "Score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/ColorRect"]
+anchor_left = 0.572
+anchor_top = 0.19
+anchor_right = 0.705
+anchor_bottom = 0.23
+margin_left = 0.0222778
+margin_top = 0.0519943
+margin_right = -0.0106659
+margin_bottom = 0.0119934
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer/ColorRect"]
+margin_left = 58.733
+margin_top = 105.452
+margin_right = 98.733
+margin_bottom = 119.452
+text = "High_Score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer/ColorRect"]
+margin_left = 172.194
+margin_top = 105.452
+margin_right = 212.194
+margin_bottom = 119.452
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main_menu" type="Button" parent="CanvasLayer/ColorRect"]
+anchor_left = 0.183
+anchor_top = 0.741
+anchor_right = 0.767
+anchor_bottom = 0.821
+margin_left = -0.0829163
+margin_top = -0.0910339
+margin_right = 0.133362
+margin_bottom = -0.171021
+disabled = true
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="CanvasLayer/ColorRect"]
+visible = false
+margin_left = 68.0181
+margin_top = 26.6787
+margin_right = 141.018
+margin_bottom = 42.6787
+rect_scale = Vector2( 2, 2 )
+text = "New record"
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2( 498.936, 314.645 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hitbox"]
+position = Vector2( -498.936, -314.645 )
+build_mode = 1
+polygon = PoolVector2Array( 530.559, 325.223, 534.625, 314.616, 523.135, 314.44, 520.483, 303.833, 515.25, 300, 512.75, 298.5, 510, 299, 504.573, 301.889, 502, 301.5, 498.5, 301.25, 494.75, 302, 492.75, 303.75, 492.5, 306.5, 495.027, 308.429, 494.143, 311.258, 489.37, 304.187, 482.83, 307.015, 490.077, 333.708 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Game_over = SubResource( 14 )
+anims/Main_menu = SubResource( 15 )
+
+[node name="Position" type="Position2D" parent="."]
+position = Vector2( 543.963, 319.979 )
+
+[node name="CanvasLayer2" parent="." instance=ExtResource( 4 )]
+
+[node name="Control" parent="CanvasLayer2" index="1"]
+visible = false
+
+[node name="Button" parent="CanvasLayer2/Control/Sprite" index="4"]
+disabled = true
+
+[node name="Label" parent="CanvasLayer2/Control" index="1"]
+visible = true
+
+[node name="Play" parent="CanvasLayer2/Control" index="2"]
+visible = true
+disabled = false
+
+[node name="High_score" parent="CanvasLayer2/Control" index="3"]
+visible = true
+disabled = false
+[connection signal="pressed" from="CanvasLayer/ColorRect/Main_menu" to="." method="_on_Main_menu_pressed"]
+[connection signal="body_shape_entered" from="Hitbox" to="." method="_on_Hitbox_body_shape_entered"]
+[connection signal="pressed" from="CanvasLayer2/Control/Play" to="." method="_on_Play_pressed"]
+
+[editable path="CanvasLayer2"]

@@ -1,0 +1,179 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://img/background/background.jpg" type="Texture" id=1]
+[ext_resource path="res://scene/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://script/Scene_principale.gd" type="Script" id=4]
+[ext_resource path="res://scene/Obstacle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://son/sfx_hit.wav" type="AudioStream" id=6]
+[ext_resource path="res://son/sfx_wing.wav" type="AudioStream" id=7]
+[ext_resource path="res://son/sfx_point.wav" type="AudioStream" id=8]
+[ext_resource path="res://img/button.png" type="Texture" id=9]
+[ext_resource path="res://img/score_png.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 29.2402, 454.911 )
+
+[node name="scene_principale" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 510.246, 410.044 )
+scale = Vector2( 1.73308, 2.00701 )
+texture = ExtResource( 1 )
+
+[node name="Obstacle" parent="." instance=ExtResource( 5 )]
+
+[node name="Obstacle2" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 655.026, -1.39288 )
+
+[node name="CollisionShape2D" parent="Obstacle2/KinematicBody2D" index="1"]
+disabled = true
+
+[node name="CollisionShape2D2" parent="Obstacle2/KinematicBody2D2" index="1"]
+disabled = true
+
+[node name="CollisionShape2D" parent="Obstacle2/KinematicBody2D2/Area2D" index="0"]
+disabled = true
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+
+[node name="AnimatedSprite" parent="player" index="1"]
+frame = 4
+
+[node name="ColorRect" parent="player/CanvasLayer" index="1"]
+margin_left = 92.0
+margin_top = 230.0
+margin_right = 400.0
+margin_bottom = 426.0
+
+[node name="Sprite" parent="player/CanvasLayer/ColorRect" index="0"]
+position = Vector2( 160.876, 89.8574 )
+scale = Vector2( 0.730807, 1.15231 )
+
+[node name="Label" parent="player/CanvasLayer/ColorRect" index="1"]
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Label2" parent="player/CanvasLayer/ColorRect" index="2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.049
+anchor_bottom = 0.099
+margin_left = 172.0
+margin_top = 65.0
+margin_right = 164.908
+margin_bottom = 64.675
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Label3" parent="player/CanvasLayer/ColorRect" index="3"]
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Label4" parent="player/CanvasLayer/ColorRect" index="4"]
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Main_menu" parent="player/CanvasLayer/ColorRect" index="5"]
+flat = true
+
+[node name="Control" parent="player/CanvasLayer2" index="1"]
+visible = true
+
+[node name="Label2" parent="player/CanvasLayer2/Control/Sprite" index="0"]
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Label5" parent="player/CanvasLayer2/Control/Sprite" index="1"]
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Label3" parent="player/CanvasLayer2/Control/Sprite" index="2"]
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Label4" parent="player/CanvasLayer2/Control/Sprite" index="3"]
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Play" parent="player/CanvasLayer2/Control" index="2"]
+anchor_top = 7.125
+anchor_right = 8.3
+anchor_bottom = 8.35
+margin_left = 3.95984
+margin_top = 0.00286865
+margin_right = -0.000335693
+margin_bottom = 0.00335693
+
+[node name="Sprite" type="Sprite" parent="player/CanvasLayer2/Control/Play" index="0"]
+position = Vector2( 81.7214, 24.535 )
+scale = Vector2( 0.932424, 0.790686 )
+texture = ExtResource( 9 )
+
+[node name="High_score" parent="player/CanvasLayer2/Control" index="3"]
+margin_top = 0.00387573
+margin_right = -12.7203
+margin_bottom = 0.964447
+
+[node name="Sprite" type="Sprite" parent="player/CanvasLayer2/Control/High_score" index="0"]
+position = Vector2( 84.6616, 26.4177 )
+scale = Vector2( 0.352741, 0.324104 )
+texture = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="player/CanvasLayer2" index="2"]
+margin_left = 68.8775
+margin_top = 538.01
+margin_right = 316.878
+margin_bottom = 586.01
+rect_scale = Vector2( 1.5, 1.5 )
+text = "Appuyez sur espace pour voler
+
+Clic gauche pour détruire les obstacles"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hit" type="AudioStreamPlayer2D" parent="player"]
+position = Vector2( 262, 18 )
+stream = ExtResource( 6 )
+volume_db = -34.33
+
+[node name="point" type="AudioStreamPlayer2D" parent="player"]
+position = Vector2( 262, 18 )
+stream = ExtResource( 8 )
+volume_db = -30.291
+
+[node name="fly" type="AudioStreamPlayer2D" parent="player"]
+position = Vector2( 262, 18 )
+stream = ExtResource( 7 )
+volume_db = -27.262
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Commencer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Commencer"]
+position = Vector2( 365.102, 404.787 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Obstacle/KinematicBody2D2/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Obstacle2/KinematicBody2D2/Area2D" to="." method="_on_Area2D2_body_entered"]
+[connection signal="pressed" from="player/CanvasLayer/ColorRect/Main_menu" to="." method="_on_Main_menu_pressed"]
+[connection signal="pressed" from="player/CanvasLayer2/Control/Sprite/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="player/CanvasLayer2/Control/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="player/CanvasLayer2/Control/High_score" to="." method="_on_High_score_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_Timer3_timeout"]
+[connection signal="body_entered" from="Commencer" to="." method="_on_Commencer_body_entered"]
+
+[editable path="Obstacle"]
+[editable path="Obstacle2"]
+[editable path="player"]
+[editable path="player/CanvasLayer2"]
